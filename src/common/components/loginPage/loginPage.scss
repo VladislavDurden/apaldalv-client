@@ -1,3 +1,5 @@
+$formWidth: 350px;
+
 .login-page {
   display: flex;
   flex-direction: column;
@@ -8,21 +10,12 @@
   overflow: hidden;
   background: #0E376F;
 
-  .main-hello-text {
-    color: #ffffff;
-    margin-bottom: 10px;
-  }
-
   .choose-form {
-    padding: 5px 25px 15px 25px;
-    width: 280px;
+    width: $formWidth;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background: #ffffff;
-    margin-top: 5px;
-    border-radius: 0 0 5px 5px;
+    align-items: flex-end;
 
     h1 {
       font-size: 16px;
@@ -32,17 +25,29 @@
 
     input {
       font-weight: bold;
-      padding: 5px 20px;
-      border-radius: 5px;
-      border: 1px solid #d1d1d1;
-      color: #000000;
+      color: #ffffff;
       cursor: pointer;
+      background: none;
+      border: none;
     }
 
     input:hover,
     input:focus,
     input:active{
       outline: none;
+    }
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 25px;
+    width: $formWidth;
+
+    .form-control {
+      width: $formWidth;
     }
   }
 }
