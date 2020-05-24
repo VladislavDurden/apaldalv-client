@@ -4,18 +4,14 @@ const apiUrl = 'https://apaldalv-api.herokuapp.com/auth';
 export const signUp = (email, password) => {
 	const url = `${apiUrl}/register`;
 
-	axios.post(url, {
-		params: {
+	axios({
+		method: 'post',
+		url: url,
+		data: {
 			email: email,
 			password: password,
 		}
-	})
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
+	});
 };
 
 export const signIn = (email, password) => {
