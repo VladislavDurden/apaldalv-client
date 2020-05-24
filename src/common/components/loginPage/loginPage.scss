@@ -49,5 +49,10 @@ $formWidth: 350px;
     .form-control {
       width: $formWidth;
     }
+
+    .btn-block {
+      width: 150px;
+      float: right;
+    }
   }
 }
