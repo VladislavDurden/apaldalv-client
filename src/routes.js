@@ -1,12 +1,10 @@
 import App from './App';
 import LoginPage from './common/components/loginPage/loginPage.component';
 
-const homeUrl = '/apaldalv-client';
-
 export default [{
 	component: App,
 	routes: [{
-		path: homeUrl,
+		path: "/",
 		exact: true,
 		component: LoginPage,
 	}]
