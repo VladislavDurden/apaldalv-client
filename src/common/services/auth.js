@@ -16,8 +16,6 @@ export const signUp = (email, password) => {
 		.catch(function (error) {
 			console.log(error);
 		});
-
-	console.log(email, password);
 };
 
 export const signIn = (email, password) => {
