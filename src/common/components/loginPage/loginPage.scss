@@ -1,10 +1,10 @@
+@import "../../constants/styleConstants";
+
 $formWidth: 300px;
 @media(min-width: 400px) {
   $formWidth: 350px;
 }
-$chooseFormMargin: -($formWidth - 20);
-$mainColor: #263345;
-$extraColor: #C9C783;
+$chooseFormMargin: -($formWidth - 10);
 
 .login-page {
   display: flex;
@@ -14,7 +14,7 @@ $extraColor: #C9C783;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: $mainColor;
+  background: const('mainColor');
 
   .choose-form {
     color: #ffffff;
@@ -32,7 +32,7 @@ $extraColor: #C9C783;
   }
 
   .choose-form:hover {
-    color: $extraColor;
+    color: const('extraColor');
   }
 
   .login-form {

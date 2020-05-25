@@ -1,0 +1,15 @@
+//use this syntax for import constants in another .scss file
+//@import " path_to_this_file "
+//property: const('constant_name')
+
+$CONSTANTS: (
+        'mainColor': #263345,
+        'extraColor': #C9C783,
+);
+
+@function const($name) {
+  @if not map-has-key($CONSTANTS, $name) {
+    @error 'Unknown constant `#{$name}`.';
+  }
+  @return map-get($CONSTANTS, $name);
+}
