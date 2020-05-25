@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import Button from '@material-ui/core/Button';
+import {Button, TextField} from '@material-ui/core';
 
 import {signUp} from "../../../services/auth";
 

@@ -14,9 +14,7 @@ const LoginPage = () => {
 					? SignInForm()
 					: SignUpForm()
 			}
-			<div className="choose-form">
-				<input type="button" value={!isSignIn ? 'SIGN IN' : 'SIGN UP'} onClick={() => changeIsSignIn(!isSignIn)}/>
-			</div>
+			<input className='choose-form' type="button" value={!isSignIn ? 'Sign in' : 'Sign up'} onClick={() => changeIsSignIn(!isSignIn)}/>
 		</div>
 	);
 };
