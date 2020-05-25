@@ -1,12 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import * as Yup from 'yup';
-import { Formik, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Button from '@material-ui/core/Button';
 
 import {signIn} from "../../../services/auth";
 
 const SignInSchema = Yup.object().shape({
-	email: Yup.string().email('Incorrect email format!').required('Required'),
-	password: Yup.string().required('Required'),
+	email: Yup.string()
+		.email('incorrect email format!')
+		.required('email is required'),
+	password: Yup.string()
+		.required('password is required')
 });
 
 export const SignInForm = () => {
@@ -18,20 +22,25 @@ export const SignInForm = () => {
 				}}
 				initialValues={{email: '', password: ''}}
 				validationSchema={SignInSchema}
-				render={({handleSubmit}) => (
-					<form onSubmit={handleSubmit}>
-						<div className="form-group">
-							<Field name="email" className="form-control" placeholder="email" type="email"/>
+			>
+				<Form>
+					<div className="form-group">
+						<Field name="email" className="form-control" placeholder="email" type="email"/>
+						<div className="error-message">
+							<ErrorMessage name="email" />
 						</div>
-						<div className="form-group">
-							<Field name="password" className="form-control" placeholder="******" type="password"/>
+					</div>
+					<div className="form-group">
+						<Field name="password" className="form-control" placeholder="******" type="password"/>
+						<div className="error-message">
+							<ErrorMessage name="password" />
 						</div>
-						<div className="form-group">
-							<button type="submit" className="btn btn-primary btn-block">Sign in</button>
-						</div>
-					</form>
-				)}
-			/>
+					</div>
+					<div className="form-group">
+						<Button type="submit" variant="contained" color="primary">Sign in</Button>
+					</div>
+				</Form>
+			</Formik>
 		</div>
 	)
 };

@@ -1,12 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 import * as Yup from 'yup';
-import { Formik, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Button from '@material-ui/core/Button';
 
 import {signUp} from "../../../services/auth";
 
 const SignUpSchema = Yup.object().shape({
-	email: Yup.string().email('Incorrect email format!').required('Required'),
-	password: Yup.string().required('Required'),
+	email: Yup.string()
+		.email('incorrect email format!')
+		.required('email is required'),
+	password: Yup.string()
+		.required('password is required')
+		.min(6, 'Must be longer 6 symbols'),
+	passwordConfirm: Yup.string()
+		.oneOf([Yup.ref('password'), null], "passwords must match")
+		.required('password confirm is required')
 });
 
 export const SignUpForm = () => {
@@ -18,20 +26,31 @@ export const SignUpForm = () => {
 				}}
 				initialValues={{email: '', password: ''}}
 				validationSchema={SignUpSchema}
-				render={({handleSubmit}) => (
-					<form onSubmit={handleSubmit}>
-						<div className="form-group">
-							<Field name="email" className="form-control" placeholder="email" type="email"/>
+			>
+				<Form>
+					<div className="form-group">
+						<Field name="email" className="form-control" placeholder="email" type="email"/>
+						<div className="error-message">
+							<ErrorMessage name="email" />
 						</div>
-						<div className="form-group">
-							<Field name="password" className="form-control" placeholder="******" type="password"/>
+					</div>
+					<div className="form-group">
+						<Field name="password" className="form-control" placeholder="******" type="password"/>
+						<div className="error-message">
+							<ErrorMessage name="password" />
 						</div>
-						<div className="form-group">
-							<button type="submit" className="btn btn-primary btn-block">Sign up</button>
+					</div>
+					<div className="form-group">
+						<Field name="passwordConfirm" className="form-control" placeholder="******" type="password"/>
+						<div className="error-message">
+							<ErrorMessage name="passwordConfirm" />
 						</div>
-					</form>
-				)}
-			/>
+					</div>
+					<div className="form-group">
+						<Button type="submit" variant="contained" color="primary">Sign up</Button>
+					</div>
+				</Form>
+			</Formik>
 		</div>
 	)
 };
