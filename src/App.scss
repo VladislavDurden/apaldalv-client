@@ -1,1 +1,8 @@
+@import "./common/constants/styleConstants";
 
+.App {
+  background: const('mainColor');
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
